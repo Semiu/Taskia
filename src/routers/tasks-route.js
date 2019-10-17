@@ -4,6 +4,7 @@ const express = require ('express');
 //Load the Task model
 const Task = require('../models/tasks')
 
+<<<<<<< HEAD
 //Load the auth module
 const auth = require ('../middleware/auth')
 
@@ -21,6 +22,16 @@ router.post('/tasks', auth, async (req, res) => {
         userId: req.user._id 
 
     })
+=======
+// create the Task route
+const router = new express.Router()
+
+//Create Task
+router.post('/tasks', async (req, res) => {
+    
+    //creating an instance of task from the Task class (exported from the tasks.js) through the constructor function
+    const task = new Task(req.body);
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
 
     // Try and catch bloc for error handling
     try {
@@ -34,6 +45,7 @@ router.post('/tasks', auth, async (req, res) => {
 
 });
 
+<<<<<<< HEAD
 //Fetch all Tasks -created by the user based on the authentication
 // GET /tasks?completed=true
 // GET /tasks?limit=10&skip=0
@@ -86,6 +98,45 @@ router.get('/tasks/:id', auth, async (req, res) => {
     try {
 
         const task = await Task.findOne({ _id, userId: req.user._id  })
+=======
+//Fetch all Tasks
+router.get('/tasks', async (req, res) => {
+
+    try {
+        const tasks = await Task.find({ })
+        res.send(tasks)
+ 
+    } catch (e) {
+        res.status(500).send(e)
+    }
+});
+
+//Fetch Task by ID
+router.get('/tasks/:id', async (req, res) => {
+    const _id = req.params.id
+
+    try {
+
+        const taskById = await Task.findById(_id)
+        if(!taskById){
+            return res.status(404).send()
+        }
+
+        res.send(taskById)
+
+    } catch(e) {
+        res.status(500).send()
+
+    }
+});
+
+//Delete task
+router.delete('/task/:id', async (req, res) => {
+
+    try{
+
+        const task = await Task.findByIdAndDelete(req.params.id)
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
 
         if(!task){
             return res.status(404).send()
@@ -93,6 +144,7 @@ router.get('/tasks/:id', auth, async (req, res) => {
 
         res.send(task)
 
+<<<<<<< HEAD
     } catch(e) {
         res.status(500).send()
 
@@ -102,6 +154,18 @@ router.get('/tasks/:id', auth, async (req, res) => {
 //Update a Task -only by the authorised user
 router.patch('/tasks/:id', auth, async (req, res) => {
 
+=======
+    } catch (e){
+        
+        res.status(400).send(e)
+
+    }
+
+})
+
+//Update Task by ID
+router.patch('/tasks/:id', async (req, res) => {
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
     const updates = Object.keys(req.body)
     const allowedUpdates = ['taskName', 'description', 'timeDue', 'completed']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
@@ -114,6 +178,7 @@ router.patch('/tasks/:id', auth, async (req, res) => {
 
     try {
 
+<<<<<<< HEAD
         const task = await Task.findOne({_id: req.params.id, userId: req.user._id})
 
         if (!task) {
@@ -141,18 +206,35 @@ router.delete('/tasks/:id', auth, async (req, res) => {
         const task = await Task.findOneAndDelete({_id: req.params.id, userId: req.user._id})
 
         if(!task){
+=======
+        const task = await Task.findById(req.params.id)
+
+        updates.forEach((updates) => task[update] = req.body[update])
+
+        await task.save()
+
+        if (!task) {
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
             return res.status(404).send()
         }
 
         res.send(task)
 
+<<<<<<< HEAD
     } catch (e){
         
+=======
+    } catch(e){
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
         res.status(400).send(e)
 
     }
 
 })
 
+<<<<<<< HEAD
 //Export as a single module
+=======
+//
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
 module.exports = router;

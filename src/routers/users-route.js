@@ -1,5 +1,6 @@
 //Load the express package for server running
 const express = require ('express');
+<<<<<<< HEAD
 //Load the image upload middleware
 const upload = require('../middleware/upload')
 //Load the sharp library for image formatting and resizing
@@ -14,6 +15,16 @@ const emails = require('../emails/account')
 const router = new express.Router();
 
 //Create User route
+=======
+//
+const User = require('../models/users')
+//
+const auth = require('../middleware/auth')
+//
+const router = new express.Router();
+
+//Create User
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
 router.post('/users', async (req, res) => {
     
     //creating an instance of user from the User class (exported from the users.js) through the constructor function
@@ -24,8 +35,11 @@ router.post('/users', async (req, res) => {
 
         await user.save()
 
+<<<<<<< HEAD
         emails.sendWelcomeEmail(user.email, user.firstName)
 
+=======
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
         const token = await user.generateAuthToken()
 
         res.status(201).send({user, token})
@@ -37,7 +51,11 @@ router.post('/users', async (req, res) => {
 
 });
 
+<<<<<<< HEAD
 //User's log in route
+=======
+//User's log in
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
 router.post('/users/login', async (req, res) => {
 
     try {
@@ -45,17 +63,22 @@ router.post('/users/login', async (req, res) => {
 
         const token = await user.generateAuthToken()
 
+<<<<<<< HEAD
         // This send all the user's data
         res.send({ user, token })
 
         //To send delineated user's data meant for the public 
         //res.send({ user: user.getPublicProfile(), token })
+=======
+        res.send({user, token})
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
 
     } catch(e){
         res.status(400).send() 
 
     }
 
+<<<<<<< HEAD
 });
 
 //User's log out route for a particular session
@@ -103,6 +126,36 @@ router.get('/users/me', auth, async (req, res) => {
 //Update user by ID
 router.patch('/users/me', auth, async (req, res) => {
 
+=======
+})
+
+// Fetch the authenticated user's profile. The auth is a middleware @ auth.js
+router.get('/users/me', auth, async (req, res) => {
+    res.send(req.user)
+    
+ });
+ 
+
+//Fetch a user by ID
+router.get('/users/:id', async (req, res) => {
+    const _id = req.params.id
+
+    try {
+        const userById = await User.findById(_id)
+        if(!userById){
+            return res.status(404).send()
+        }
+        res.send(userById)
+    } catch(e) {
+        res.status(500).send()
+
+    }
+    
+});
+
+//Update user by ID
+router.patch('/users/:id', async (req, res) => {
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
     const updates = Object.keys(req.body)
     const allowedUpdates = ['firstName', 'lastName', 'email', 'password']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
@@ -112,6 +165,7 @@ router.patch('/users/me', auth, async (req, res) => {
         return res.status(400).send({error: "Invalid updates!"});
 
     }
+<<<<<<< HEAD
     try {
         
         updates.forEach((update) => req.user[update] = req.body[update]) 
@@ -139,12 +193,31 @@ router.delete('/users/me', auth, async (req, res) => {
 
     } catch (e) {
 
+=======
+
+    try {
+
+        const user = await User.findById(req.params.id)
+
+        updates.forEach((updates) => user[update] = req.body[update]) 
+
+        await user.save()
+
+        if (!user) {
+            return res.status(404).send()
+        }
+
+        res.send(user)
+
+    } catch(e){
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
         res.status(400).send(e)
 
     }
 
 })
 
+<<<<<<< HEAD
 //Upload user's avatar route
 router.post('/users/me/avatar', auth, upload.single('avatar'), async (req, res) => {
 
@@ -190,10 +263,33 @@ router.get('/users/:id/avatar', async (req, res) => {
 
     } catch (e) {
         res.status(404).send()
+=======
+//Delete user
+router.delete('/user/:id', async (req, res) => {
+
+    try{
+
+        const user = await User.findByIdAndDelete(req.params.id)
+
+        if(!user){
+            return res.status(404).send()
+        }
+
+        res.send(user)
+
+    } catch (e){
+
+        res.status(400).send(e)
+
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
     }
 
 })
 
+<<<<<<< HEAD
 
 //Export the router as a single module
+=======
+//
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
 module.exports = router;

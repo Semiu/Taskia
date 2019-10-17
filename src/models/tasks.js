@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 //Load the required packages for this module dependency
+=======
+//Loading the required packages for this module dependency
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
 const mongoose = require('mongoose');
 const validator = require('validator');
 const mongodb = require('mongodb');
@@ -13,9 +17,17 @@ const taskSchema = mongoose.Schema({
     
     userId: {
         type: mongoose.Schema.Types.ObjectId,
+<<<<<<< HEAD
         required: true,
         ref: 'User'
     },
+=======
+        ref: 'User'
+    },
+    timeCreated: {
+        type: Date
+    },
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
     taskName: {
         type: String,
         required: true,
@@ -31,7 +43,10 @@ const taskSchema = mongoose.Schema({
         required: true,
         trim: true
     },
+<<<<<<< HEAD
     /** 
+=======
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
     timeDue: {
         type: Date,
         validate(value){
@@ -45,13 +60,19 @@ const taskSchema = mongoose.Schema({
     timeLeft: {
         type: Number
     },
+<<<<<<< HEAD
     */
+=======
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
     completed: {
         type: Boolean,
         default: false
     }
+<<<<<<< HEAD
 }, {
     timestamps: true
+=======
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
 });
 
 //Creating and Saving the Mongoose Models for Task

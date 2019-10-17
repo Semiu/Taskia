@@ -13,7 +13,11 @@ const taskRouter = require('./routers/tasks-route')
 const app = express();
 
 //Create a port thread for handling the HTTP request or a local host
+<<<<<<< HEAD
 const port = process.env.PORT
+=======
+const port = process.env.PORT || 3000
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
 
 //Invoke the use function from express, and express.json as the argument
 app.use(express.json());

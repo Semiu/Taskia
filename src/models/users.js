@@ -7,9 +7,12 @@ const validate = require('validate.js')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
+<<<<<<< HEAD
 //Load the Task model
 const Task = require('./tasks')
 
+=======
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
 //Create a new instance of the ObjectID when the script is run
 const id = new ObjectID();
 
@@ -53,7 +56,11 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         //validate: function (value) {
+<<<<<<< HEAD
                 //return //.test(value)
+=======
+                //return /^[a-zA-Z0-9\ ^ ${ } [ ] ( ) . + ? | - &]$/.test(value)
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
                 
         //},
         required: true,
@@ -67,6 +74,7 @@ const userSchema = mongoose.Schema({
         }
 
     }],
+<<<<<<< HEAD
     avatar: {
         type: Buffer
     }
@@ -101,11 +109,24 @@ userSchema.methods.toJSON = function () {
 
 //Generate AuthToken function for the userSchema
 //This is a method for every instance of the user (Note: const user = this)
+=======
+    image: {
+        type: Buffer
+    }
+});
+
+
+//Generate AuthToken function for the userSchema
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
 userSchema.methods.generateAuthToken = async function () {
 
     const user = this
     
+<<<<<<< HEAD
     const token = jwt.sign( { _id: user._id.toString() }, process.env.JWT_SECRET )
+=======
+    const token = jwt.sign( { _id: user._id.toString() }, 'adelowowonwmowi' )
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
 
     user.tokens = user.tokens.concat( {token} )
 
@@ -116,7 +137,10 @@ userSchema.methods.generateAuthToken = async function () {
 }
 
 //Find the user by the email supplied, and compare the password supplied with the password registered
+<<<<<<< HEAD
 //This is a method for all users -the User (upper case)
+=======
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
 userSchema.statics.findByCredentials = async (email, password) => {
 
     const user = await User.findOne( { email } )
@@ -136,9 +160,15 @@ userSchema.statics.findByCredentials = async (email, password) => {
 
 }
 
+<<<<<<< HEAD
 //Middleware for the hashing of the password before saving
 userSchema.pre('save', async function (next) {
     
+=======
+
+//Middleware for the hashing of the password before saving
+userSchema.pre('save', async function (next) {
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
     const user = this
 
     if (user.isModified('password')){
@@ -148,6 +178,7 @@ userSchema.pre('save', async function (next) {
     next()
 })
 
+<<<<<<< HEAD
 //Middleware for deleting the tasks when the user is deleted
 userSchema.pre('remove', async function (next) {
 
@@ -159,6 +190,8 @@ userSchema.pre('remove', async function (next) {
 })
 
 
+=======
+>>>>>>> 3cd98c82ce2a1412abf9344406880b186141b5c5
 //Creating and Saving the Mongoose Models for User
 const User = mongoose.model('User', userSchema);
 
