@@ -14,6 +14,7 @@ const emails = require('../emails/account')
 const router = new express.Router();
 
 //Create User route
+//const createUser
 router.post('/users', async (req, res) => {
     
     //creating an instance of user from the User class (exported from the users.js) through the constructor function
@@ -38,6 +39,7 @@ router.post('/users', async (req, res) => {
 });
 
 //User's log in route
+//const loginUser
 router.post('/users/login', async (req, res) => {
 
     try {
@@ -59,6 +61,7 @@ router.post('/users/login', async (req, res) => {
 });
 
 //User's log out route for a particular session
+//const logoutUser
 router.post('/users/logout', auth, async (req, res) => {
 
     try {
@@ -77,6 +80,7 @@ router.post('/users/logout', auth, async (req, res) => {
 });
 
 //User's log out for all sessions
+//const logoutUserfromAll
 router.post('/users/logoutAll', auth, async (req, res) => {
 
     try {
@@ -94,6 +98,7 @@ router.post('/users/logoutAll', auth, async (req, res) => {
 });
 
 // Fetch the authenticated user's profile. The auth is a middleware @ auth.js
+//const displayUserProfile
 router.get('/users/me', auth, async (req, res) => {
     
     res.send(req.user)
@@ -101,6 +106,7 @@ router.get('/users/me', auth, async (req, res) => {
  });
 
 //Update user by ID
+//const updateuserInfo
 router.patch('/users/me', auth, async (req, res) => {
 
     const updates = Object.keys(req.body)
@@ -127,6 +133,7 @@ router.patch('/users/me', auth, async (req, res) => {
 })
 
 //Delete user
+//const deleteUser
 router.delete('/users/me', auth, async (req, res) => {
 
     try {
@@ -146,6 +153,7 @@ router.delete('/users/me', auth, async (req, res) => {
 })
 
 //Upload user's avatar route
+//const uploadAvatar
 router.post('/users/me/avatar', auth, upload.single('avatar'), async (req, res) => {
 
     const buffer = await sharp(req.file.buffer).resize({ width: 250, height: 250 }).png().toBuffer()
@@ -163,6 +171,7 @@ router.post('/users/me/avatar', auth, upload.single('avatar'), async (req, res) 
 })
 
 //Delete user's avatar
+//const deleteAvatar
 router.delete('/users/me/avatar', auth, async (req, res) => {
 
     req.user.avatar = undefined
@@ -174,6 +183,7 @@ router.delete('/users/me/avatar', auth, async (req, res) => {
 })
 
 //Fetch user's avatar for display
+//const displayAvatar 
 router.get('/users/:id/avatar', async (req, res) => {
 
     try {
