@@ -8,7 +8,7 @@ const Task = require('../models/tasks')
 const auth = require ('../middleware/auth')
 
 //Create an instance of the router from the Express library
-const router = new express.Router()
+const router = new express.Router();
 
 //Create Task
 router.post('/tasks', auth, async (req, res) => {
@@ -20,7 +20,7 @@ router.post('/tasks', auth, async (req, res) => {
         ...req.body,
         userId: req.user._id 
 
-    })
+    });
 
     // Try and catch bloc for error handling
     try {

@@ -49,7 +49,6 @@ app.get('/index', (req, res) => {
 
 })
 
-
 //Route for rendering the dashboard.hbs file
 app.get('/signup', (req, res) => {
     res.render('signup', {
