@@ -225,8 +225,13 @@ iframe {
   text-align: center;
 }
 
+#alert_danger {
+  color: red;
+}
 
-
+#alert_success{
+  color: green;
+}
 /*--------------------------[ Input ]----------------------------------------*/
 
 .wrap-input100 {

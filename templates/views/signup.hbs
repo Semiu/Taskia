@@ -32,39 +32,45 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form class="login100-form validate-form">
+
+				<form class="login100-form validate-form" id="signup" method="POST" action="/users">
 					<span class="login100-form-title p-b-49">
 						Taskia - Signup
 					</span>
 
+					<div class="wrap-input100">
+						<h2 class="alert_msg"  name="alert" id="alert_danger"></h2>
+						<h2 class="alert_msg"  name="alert" id="alert_success"></h2>
+					</div>
+
                     <div class="wrap-input100">
 						<span class="label-input100">Profile Picture</span> <br>
                         <span class="focus-input100" ></span>
-						<input class="input100" type="file" name="profilepic" placeholder="jpg, jpeg, or png">
+						<input class="input100" type="file" name="profilepic" id="profilepic" placeholder="jpg, jpeg, or png">
 						
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "First Name is required">
 						<span class="label-input100">First Name</span>
-						<input class="input100" type="text" name="firstname" placeholder="First Name">
+						<input class="input100" type="text" name="firstname" id="firstname" placeholder="First Name">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate = "Last Name is required">
 						<span class="label-input100">Last Name</span>
-						<input class="input100" type="text" name="lastname" placeholder="Last Name">
+						<input class="input100" type="text" name="lastname" id="lastname" placeholder="Last Name">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate = "Email is required">
 						<span class="label-input100">Email</span>
-						<input class="input100" type="text" name="email" placeholder="Type your email">
+						<input class="input100" type="text" name="email" id="email" placeholder="Type your email">
 						<span class="focus-input100" data-symbol="&#9993;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="pass" placeholder="Type your password">
+						<input class="input100" type="password" name="password" id="password" placeholder="Type your password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 				
@@ -78,6 +84,7 @@
 						</div>
 					</div>
 				</form>
+
 					<div class="txt1 text-center p-t-54 p-b-20">
 						<span>
 							Or Have you registered?
@@ -85,6 +92,7 @@
 					</div>
 					<br>
 					<div class="container-login100-form-btn">
+						<!-- Button directing to the Login form -->
 						<input type="button" class="btn btn-success btn-lg" value="Login" onclick="window.location.href = 'index'">
 					</div>
 
@@ -97,21 +105,25 @@
 	<div id="dropDownSelect1"></div>
 	
 <!--===============================================================================================-->
-	<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="/vendor/animsition/js/animsition.min.js"></script>
+<script src="/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="/vendor/bootstrap/js/popper.js"></script>
-	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="/vendor/bootstrap/js/popper.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="/vendor/select2/select2.min.js"></script>
+<script src="/vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-	<script src="/vendor/daterangepicker/moment.min.js"></script>
-	<script src="/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="/vendor/daterangepicker/moment.min.js"></script>
+<script src="/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-	<script src="/vendor/countdowntime/countdowntime.js"></script>
+<script src="/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="/js/main.js"></script>
+<script src="/js/signup.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
 </body>
 </html>

@@ -19,7 +19,7 @@ router.post('/users', async (req, res) => {
     
     //creating an instance of user from the User class (exported from the users.js) through the constructor function
     const user = new User(req.body);
-    
+
     //
     try {
 
@@ -31,8 +31,11 @@ router.post('/users', async (req, res) => {
 
         res.status(201).send({user, token})
 
+        //res.redirect('/dashboard')
+
     } catch (e) {
         res.status(400).send(e)
+        //console.log(e)
 
     }
 
