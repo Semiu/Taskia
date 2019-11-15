@@ -1,17 +1,11 @@
 //Loading the required packages for this module dependency
 const mongoose = require('mongoose');
 const validator = require('validator');
-//const mongodb = require('mongodb');
-//const ObjectID = mongodb.ObjectID;
-//const validate = require('validate.js')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 //Load the Task model
 const Task = require('./tasks')
-
-//Create a new instance of the ObjectID when the script is run
-//const id = new ObjectID();
 
 //Defining the userSchema for the users
 const userSchema = mongoose.Schema({
@@ -52,10 +46,6 @@ const userSchema = mongoose.Schema({
     },
     password: {
         type: String,
-        //validate: function (value) {
-                //return //.test(value)
-                
-        //},
         required: true,
         trim: true,
         minlength: 8

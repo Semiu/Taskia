@@ -31,14 +31,10 @@ router.post('/users', async (req, res) => {
 
         res.status(201).send({user, token})
 
-        //res.redirect('/dashboard')
-
     } catch (e) {
         res.status(400).send(e)
-        //console.log(e)
 
     }
-
 });
 
 //User's log in route
@@ -206,7 +202,6 @@ router.get('/users/:id/avatar', async (req, res) => {
     }
 
 })
-
 
 //Export the router as a single module
 module.exports = router;
