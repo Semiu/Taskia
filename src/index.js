@@ -9,6 +9,7 @@ const publicView = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialPath = path.join(__dirname, '../templates/partials')
 
+
 //Lond the Body Parser package for oarsing HTML form
 const bodyParser = require('body-parser');
 
@@ -47,6 +48,7 @@ app.get('/index', (req, res) => {
 
 })
 
+
 //Route for rendering the signup.hbs file
 app.get('/signup', (req, res) => {
     
@@ -56,12 +58,26 @@ app.get('/signup', (req, res) => {
 
 //Route for rendering the users.hbs file
 app.get('/users', (req, res) => {
+
     res.render('users', {
-        dev: "Semiu"
+        dev: "User"
 
     })
+})
+
+//Route for rendering the signup.hbs file
+app.get('/settings', (req, res) => {
+    
+    res.render('settings', {
+    })
+})
+/**
+ * 
+
+app.get('/users/me', (req, res){
 
 })
+ */
 
 //Use the body parser library
 app.use(bodyParser.urlencoded({ extended: false}));

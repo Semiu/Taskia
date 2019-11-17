@@ -8,9 +8,12 @@ const userEmail = document.getElementById("email")
 const userPassword_1 = document.getElementById("password1")
 const userPassword_2 = document.getElementById("password2")
 
-//Validating the form input and send error message function
+//Validating the form input and send error message function if not validated
 //START
 let validateInputAndSendErrorMsg = function (){document.getElementById("signup").addEventListener('submit', (e) => {
+
+    //Grab the SignUpFormData
+    const signUpFormData = document.getElementById("signup")
 
     //Restricting default behaviour of form
     e.preventDefault();
@@ -54,9 +57,10 @@ let validateInputAndSendErrorMsg = function (){document.getElementById("signup")
             alert(errorMessage);
             return;
         }
-        createUser();
+        //Call the createuser function
+        createUser(signUpFormData);
     }
-
+    //Call the SignUp function
     signUp();
 })};
 //END
@@ -66,12 +70,7 @@ validateInputAndSendErrorMsg ();
 
 //createUser function (only to be called when the form input is validated)
 //START
-let createUser = function(){ document.getElementById("signup").addEventListener('submit', (e) => {
-
-    //Restricting multiple entries
-    e.preventDefault();
-
-    const form = e.target;
+let createUser = function(signUpFormData){
 
     //Setting the alert content to null
     alert_dg.textContent = " ";
@@ -84,13 +83,15 @@ let createUser = function(){ document.getElementById("signup").addEventListener(
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                firstName: form.firstname.value,
-                lastName: form.lastname.value,
-                email: form.email.value,
-                password: form.password1.value 
+                firstName: signUpFormData.firstname.value,
+                lastName: signUpFormData.lastname.value,
+                email: signUpFormData.email.value,
+                password: signUpFormData.password1.value 
             })
 
     }).then((data) => {
+
+        console.log(data)
 
         if(data.status === 400){
 
@@ -100,17 +101,18 @@ let createUser = function(){ document.getElementById("signup").addEventListener(
 
         } else {
 
-            alert_sc.textContent = "Your account has been created " + form.firstname.value;
+            alert("Your account has been created, " + signUpFormData.firstname.value);
 
-            //The modal content and backdrop are removed after 500 milliseconds when the preceding action is successful
+            //The user's page will be loaded after 5000 milliseconds 
 	    		setTimeout(function (){
-                    alert_sc.textContent = "Wait...";
+                    alert_sc.textContent = "Wait ...";
+
+                    //Transition to '/users' url
 	    			window.location.href = data.url;
-	    		}, 500);
+                }, 500);
 
         }
 
     })
-
-})};
+};
 //END

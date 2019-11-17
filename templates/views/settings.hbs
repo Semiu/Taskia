@@ -45,31 +45,19 @@
 
             <div id="pic"><image src=" " alt=""></image></div>
 					<span class="login100-form-title p-b-70">
-						Taskia - Dashboard
+						Taskia - Settings
 					</span>
                     <div class="row">
                     <h3>Welcome, {{dev}}.</h3> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createTaskModal" style="margin-left:10px;">
                     Create New Task</button>
                     </div>
                     <br>
-                 
-                    <table id="task_list" class="stage_hide display">
-						<thead>
-							<tr>
-								<th>Task Name</th>
-								<th>Description</th>
-								<th>Due Date</th>
-								<th>Time Left</th>
-								<th>Completed</th>
-							</tr>
-						</thead>
-					</table>
-                 
+                    
 			</div>
 		</div>
 	</div>
 
-	<!--========================================Create Task =======================================================-->
+	<!--========================================Upload Avatar =======================================================-->
 	
 <div class="modal fade" id="createTaskModal" role="dialog" aria-labelledby="createTaskLabel">
 		<div class="modal-dialog" role="document">
@@ -92,13 +80,13 @@
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate ="Task Name is required">
 						<span class="label-input100">Task Name</span>
-						<input class="input100" type="text" id="taskname" name="taskname" placeholder="Task Name" required>
+						<input class="input100" type="text" id="taskname" name="taskname" placeholder="Task Name">
 						<span class="focus-input100"></span>
 					</div>
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate = "Task Description is required">
 						<span class="label-input100">Task Description</span>
-						<input class="input100" type="text" id= "taskdescr" name="taskdescr" placeholder="Task Description" required>
+						<input class="input100" type="text" id= "taskdescr" name="taskdescr" placeholder="Task Description">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -108,14 +96,14 @@
 									placeholder="The Due Date" data-validation="isItLater" data-validation="isItFuture due_date"
 									data-validation-format="mm-dd-yyyy"
 									data-validation-error-msg-birthdate="Please enter the date in mm-dd-yyyy format"
-									data-datable="mmddyyyy" data-datable-divider="-" required/>
+									data-datable="mmddyyyy" data-datable-divider="-" />
 						<span class="focus-input100"></span>
 					</div>
 					
 						<div class=" container-login100-form-btn btn-toolbar">
-							<input type="button" id="createTaskCan" class="btn btn-danger btn-lg" value="Cancel" style="margin-right:5px;">
+							<input type="button" id="createTaskSub" class="btn btn-danger btn-lg" value="Cancel" style="margin-right:5px;">
 
-							<input type="button" id="createTaskSub" class="btn btn-success btn-lg" value="Submit">
+							<input type="button" id="createTaskCan" class="btn btn-success btn-lg" value="Submit">
 						</div>
 					
 				</form>
@@ -125,7 +113,7 @@
 	</div>
 </div>
 
-<!--========================================Edit Task =======================================================-->
+<!--========================================Delete Avatar =======================================================-->
 
 <div class="modal fade" id="editCreateTaskModal" role="dialog" aria-labelledby="createTaskLabel">
 		<div class="modal-dialog" role="document">
@@ -190,10 +178,8 @@
 	</div>
 </div>
 
-
 <!--=============================================================================================== -->
 <script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
-
 <!--=============================================================================================== -->
 <script src="/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
@@ -207,12 +193,16 @@
 <!--=============================================================================================== -->
 <script src="/vendor/countdowntime/countdowntime.js"></script>
 <!--=============================================================================================== -->
+
+
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 
-<script src="/js/users.js"></script>
+
+<script src="/js/settings.js"></script>
 
 </body>
 </html>

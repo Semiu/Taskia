@@ -29,6 +29,11 @@ router.post('/users', async (req, res) => {
 
         const token = await user.generateAuthToken()
 
+        res.cookie('auth_token', token, {
+            maxAge: 36000,
+            httpOnly: true
+        })
+
         res.status(201).send({user, token})
 
     } catch (e) {
@@ -45,6 +50,11 @@ router.post('/users/login', async (req, res) => {
         const user = await User.findByCredentials(req.body.email, req.body.password)
 
         const token = await user.generateAuthToken()
+
+        res.cookie('auth_token', token, {
+            maxAge: 36000,
+            httpOnly: true
+        })
 
         // This send all the user's data
         res.send({ user, token })
