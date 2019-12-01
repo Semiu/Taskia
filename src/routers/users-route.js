@@ -29,10 +29,7 @@ router.post('/users', async (req, res) => {
 
         const token = await user.generateAuthToken()
 
-        res.cookie('auth_token', token, {
-            maxAge: 36000,
-            httpOnly: true
-        })
+        res.cookie('auth_token', token)
 
         res.status(201).send({user, token})
 
@@ -51,16 +48,10 @@ router.post('/users/login', async (req, res) => {
 
         const token = await user.generateAuthToken()
 
-        res.cookie('auth_token', token, {
-            maxAge: 36000,
-            httpOnly: true
-        })
+        res.cookie('auth_token', token)
 
         // This send all the user's data
         res.send({ user, token })
-
-        //To send delineated user's data meant for the public 
-        //res.send({ user: user.getPublicProfile(), token })
 
     } catch(e){
         res.status(400).send() 
