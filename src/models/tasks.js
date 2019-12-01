@@ -1,13 +1,5 @@
 //Load the required packages for this module dependency
 const mongoose = require('mongoose');
-//const validator = require('validator');
-//const mongodb = require('mongodb');
-//const ObjectID = mongodb.ObjectID;
-//const validate = require("validate.js");
-
-//Create a new instance of the ObjectID when the script is run
-//const id = new ObjectID();
-
 //Defining the taskSchema for the Tasks
 const taskSchema = mongoose.Schema({
     
