@@ -3,9 +3,7 @@
 Taskia: putting your task in your hand, is a task management application. 
 
 This is the backend component of the application where the routes APIs and database models and schemas are specified.
-It is developed using Node, Express.js and MongoDB. The front-end is in another 
-
-The backend is deployed at: https://taskia.herokuapp.com
+It is developed using Node, Express.js and MongoDB.
 
 ## Available Scripts
 
