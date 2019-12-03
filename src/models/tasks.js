@@ -23,7 +23,6 @@ const taskSchema = mongoose.Schema({
         required: true,
         trim: true
     },
-    /** 
     timeDue: {
         type: Date,
         validate(value){
@@ -34,6 +33,7 @@ const taskSchema = mongoose.Schema({
             }
         }
     },
+    /**
     timeLeft: {
         type: Number
     },
