@@ -6,7 +6,7 @@ const upload = require('../middleware/upload')
 const sharp = require('sharp')
 //Load the User model
 const User = require('../models/users')
-//Load the Authetication module
+//Load the Authentication module
 const auth = require('../middleware/auth')
 //Load the Email sending modules
 const emails = require('../emails/account')

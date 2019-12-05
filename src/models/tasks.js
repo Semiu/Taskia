@@ -1,4 +1,5 @@
 //Load the required packages for this module dependency
+const validator = require('validate.js');
 const mongoose = require('mongoose');
 //Defining the taskSchema for the Tasks
 const taskSchema = mongoose.Schema({
@@ -26,7 +27,7 @@ const taskSchema = mongoose.Schema({
     timeDue: {
         type: Date,
         validate(value){
-            if (value == ""){
+            if (value === ""){
                 throw new Error("This field is required!");
             }if (!validator.isAfter(value, Date.now)){
                 throw new Error("Due time cannot be earlier!");
