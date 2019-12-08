@@ -13,7 +13,7 @@ const emails = require('../emails/account')
 //Initialize a new route from the Express server library
 const router = new express.Router();
 //Loading the path package
-const path = require('path');
+//const path = require('path');
 
 //Create User route
 //const createUser
@@ -31,9 +31,9 @@ router.post('/users', async (req, res) => {
 
         const token = await user.generateAuthToken()
 
-        //res.cookie('auth_token', token)
+        //res.cookie('auth_token', token) -This is when the application is a single entity
 
-        //res.sendFile(path.resolve(__dirname, '..', 'dist', 'index.html'))
+        //res.sendFile(path.resolve(__dirname, '..', 'dist', 'index.html')) -This is when the application is a single entity
 
         res.status(201).send({user, token})
 
@@ -52,9 +52,8 @@ router.post('/users/login', async (req, res) => {
 
         const token = await user.generateAuthToken()
 
-        res.cookie('auth_token', token)
-
-        res.sendFile(path.resolve(__dirname, '..', 'dist', 'index.html'))
+        //res.cookie('auth_token', token) -This is when the application is a single entity
+        //res.sendFile(path.resolve(__dirname, '..', 'dist', 'index.html')) -This is when the application is a single entity
 
         // This send all the user's data
         res.send({ user, token })

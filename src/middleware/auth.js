@@ -8,9 +8,9 @@ const User = require('../models/users')
 const auth = async (req, res, next) => {
 
     try {
-        
-        //const token = req.cookies['auth_token']
-        const token = req.header('Authorization').replace('Bearer ', '');
+
+        //const token = req.cookies['auth_token'] -This is when the application is a single entity
+        const token = req.header('Authorization').replace('Bearer ', ''); //when frontend is seperated from the backend
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
