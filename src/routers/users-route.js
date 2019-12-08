@@ -31,9 +31,9 @@ router.post('/users', async (req, res) => {
 
         const token = await user.generateAuthToken()
 
-        res.cookie('auth_token', token)
+        //res.cookie('auth_token', token)
 
-        res.sendFile(path.resolve(__dirname, '..', 'dist', 'index.html'))
+        //res.sendFile(path.resolve(__dirname, '..', 'dist', 'index.html'))
 
         res.status(201).send({user, token})
 
@@ -55,7 +55,7 @@ router.post('/users/login', async (req, res) => {
         res.cookie('auth_token', token)
 
         res.sendFile(path.resolve(__dirname, '..', 'dist', 'index.html'))
-        
+
         // This send all the user's data
         res.send({ user, token })
 
