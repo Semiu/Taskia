@@ -1,5 +1,5 @@
 //Load the required packages for this module dependency
-const validator = require('validate.js');
+//const validator = require('validate.js');
 const mongoose = require('mongoose');
 //Defining the taskSchema for the Tasks
 const taskSchema = mongoose.Schema({
@@ -24,6 +24,7 @@ const taskSchema = mongoose.Schema({
         required: true,
         trim: true
     },
+     /**
     timeDue: {
         type: Date,
         validate(value){
@@ -34,7 +35,7 @@ const taskSchema = mongoose.Schema({
             }
         }
     },
-    /**
+   
     timeLeft: {
         type: Number
     },

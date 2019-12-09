@@ -26,6 +26,7 @@ router.post('/tasks', auth, async (req, res) => {
     try {
         await task.save()
         res.status(201).send(task)
+        
 
     } catch (e) {
         res.status(400).send(e)
@@ -103,7 +104,7 @@ router.get('/tasks/:id', auth, async (req, res) => {
 router.patch('/tasks/:id', auth, async (req, res) => {
 
     const updates = Object.keys(req.body)
-    const allowedUpdates = ['taskName', 'description', 'timeDue', 'completed']
+    const allowedUpdates = ['taskName', 'description', 'completed']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
     if(!isValidOperation){
